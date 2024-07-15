@@ -40,7 +40,7 @@ const routes = [
   { path: '/myorder/:dataType', component: Myorder },
   { path: '/address', component: Address },
   { path: '/addressEditAdd', component: AddressEditAdd },
-  { path: '/comment/:id', component: Comment }
+  { path: '/comment', component: Comment }
 ]
 
 const router = new VueRouter({

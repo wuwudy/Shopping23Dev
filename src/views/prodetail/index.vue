@@ -50,7 +50,9 @@
     <div class="comments">
       <div class="comTop">
         <span>商品评论({{ commentsCount }}条)</span>
-        <span>查看更多<van-icon name="arrow" /></span>
+        <span @click="$router.push(`/comment?id=${goodsId}&type=-1`)"
+          >查看更多<van-icon name="arrow"
+        /></span>
       </div>
       <commentsList
         :comments="comments"
@@ -146,7 +148,7 @@ import {
 } from '@/api/product'
 import { addCart } from '@/api/cart'
 import CountBox from '@/components/CountBox.vue'
-import CommentsList from '@/components/CommentsList.vue'
+import CommentsList from '@/components/CommentsList'
 export default {
   name: 'prodetailIndex',
   components: {
@@ -257,8 +259,6 @@ export default {
             return 0
         }
       })
-
-      console.log(this.commentsScores)
     },
     //加入购物车或是立即购买逻辑
     CartOrPay() {

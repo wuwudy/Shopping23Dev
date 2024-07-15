@@ -9,7 +9,7 @@
         <img :src="item.user.avatar_url" />
         <span>{{ item.user.nick_name }}</span>
         <div class="rateShow">
-          <van-rate v-model="commentsScores[index]" readonly color="#f4a213" />
+          <van-rate v-model="scores[index]" readonly color="#f4a213" />
         </div>
       </div>
       <div class="ocMain text-ellipsis-2">
@@ -22,6 +22,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      scores: this.commentsScores
+    }
+  },
   props: {
     comments: {
       type: Array,
@@ -33,7 +38,15 @@ export default {
     }
   },
   created() {
+    console.log('Yes')
     console.log(this.comments)
+    console.log(this.commentsScores)
+  },
+  watch: {
+    commentsScores(newValue) {
+      console.log('change')
+      this.scores = newValue
+    }
   }
 }
 </script>
@@ -42,7 +55,8 @@ export default {
 .commentsList {
   margin-top: 10px;
   .onecomment {
-    margin-top: 10px;
+    // border-bottom: 1px solid red;
+    margin-top: 20px;
     .ocTop {
       height: 30px;
       line-height: 30px;
